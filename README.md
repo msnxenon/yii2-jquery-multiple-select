@@ -1,1 +1,1 @@
-# yii2-multiple-select
+# yii2-jquery-multiple-select

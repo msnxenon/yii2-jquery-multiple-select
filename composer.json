@@ -1,7 +1,7 @@
 {
-    "name": "ivan-chkv/yii2-multiple-select",
+    "name": "ivan-chkv/yii2-jquery-multiple-select",
     "description": "",
-    "keywords": ["yii2", "multiple", "select", "checkbox"],
+    "keywords": ["yii2", "jquery", "multiple", "select", "checkbox"],
     "type": "yii2-extension",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "yii\\multiple_select\\": ""
+            "yii\\jquery_multiple_select\\": ""
         }
     }
 }
