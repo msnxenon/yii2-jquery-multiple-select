@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "yii\\jquery_multiple_select\\": ""
+            "yii\\jquery\\multiple_select\\": ""
         }
     }
 }
