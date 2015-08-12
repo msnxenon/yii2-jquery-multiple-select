@@ -1,0 +1,22 @@
+{
+    "name": "ivan-chkv/yii2-multiple-select",
+    "description": "",
+    "keywords": ["yii2", "multiple", "select", "checkbox"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan Chistyakov",
+            "email": "ivan.chkv@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": ">=2.0.4",
+        "bower-asset/multiple-select": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "yii\\multiple_select\\": ""
+        }
+    }
+}
