@@ -1,6 +1,6 @@
 <?php
 
-namespace app\assets;
+namespace yii\multiple_select;
 
 use yii\web\AssetBundle;
 
