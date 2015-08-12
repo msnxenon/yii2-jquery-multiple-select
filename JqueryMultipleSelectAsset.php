@@ -1,6 +1,6 @@
 <?php
 
-namespace yii\jquery_multiple_select;
+namespace yii\jquery\multiple_select;
 
 use yii\web\AssetBundle;
 
