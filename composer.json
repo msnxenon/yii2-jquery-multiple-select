@@ -1,23 +1,23 @@
 {
-    "name": "ivan-chkv/yii2-jquery-multiple-select",
-    "description": "",
-    "keywords": ["yii2", "jquery", "multiple", "select", "checkbox"],
-    "homepage": "http://wenzhixin.net.cn/p/multiple-select/",
-    "type": "yii2-extension",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ivan Chistyakov",
-            "email": "ivan.chkv@gmail.com"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": ">=2.0.4",
-        "bower-asset/multiple-select": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "yii\\jquery\\multiple_select\\": ""
-        }
+  "name": "ivan-chkv/yii2-jquery-multiple-select",
+  "description": "Yii2 Jquery Multiple Select Asset",
+  "keywords": ["yii2", "jquery", "multiple", "select", "checkbox"],
+  "homepage": "http://wenzhixin.net.cn/p/multiple-select/",
+  "type": "yii2-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ivan Chistyakov",
+      "email": "ivan.chkv@gmail.com"
     }
+  ],
+  "require": {
+    "yiisoft/yii2": ">=2.0.4",
+    "bower-asset/multiple-select": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "yii\\jquery\\multiple_select\\": ""
+    }
+  }
 }
