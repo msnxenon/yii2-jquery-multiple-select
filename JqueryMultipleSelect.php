@@ -10,6 +10,8 @@ use yii\helpers\Html,
 class JqueryMultipleSelect extends InputWidget
 {
 
+    public $options = ['class' => 'form-control'];
+
     public $clientOptions = [];
 
     public $items = [];
