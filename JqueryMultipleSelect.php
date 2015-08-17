@@ -16,8 +16,6 @@ class JqueryMultipleSelect extends InputWidget
 
     public $items = [];
 
-    public $selection = null;
-
     public function run()
     {
         $view = $this->getView();
@@ -27,7 +25,7 @@ class JqueryMultipleSelect extends InputWidget
         if ($this->hasModel()) {
             return Html::activeListBox($this->model, $this->attribute, $this->items, $this->options);
         } else {
-            return Html::listBox($this->name, $this->selection, $this->items, $this->options);
+            return Html::listBox($this->name, $this->value, $this->items, $this->options);
         }
     }
 }
