@@ -21,10 +21,11 @@ class JqueryMultipleSelect extends InputWidget
         $view = $this->getView();
         JqueryMultipleSelectAsset::register($view);
         $view->registerJs('jQuery(\'#' . $this->options['id'] . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');');
+        $this->options['multiple'] = true;
         if ($this->hasModel()) {
-            return Html::activeDropDownList($this->model, $this->attribute, $this->items, $this->options);
+            return Html::activeListBox($this->model, $this->attribute, $this->items, $this->options);
         } else {
-            return Html::dropDownList($this->name, $this->selection, $this->items, $this->options);
+            return Html::listBox($this->name, $this->selection, $this->items, $this->options);
         }
     }
 }
