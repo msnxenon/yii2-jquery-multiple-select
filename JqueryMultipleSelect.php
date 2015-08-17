@@ -18,13 +18,13 @@ class JqueryMultipleSelect extends InputWidget
 
     public function run()
     {
-        if ($this->hasModel()) {
-            echo Html::activeDropDownList($this->model, $this->attribute, $this->items, $this->options);
-        } else {
-            echo Html::dropDownList($this->name, $this->selection, $this->items, $this->options);
-        }
         $view = $this->getView();
         JqueryMultipleSelectAsset::register($view);
         $view->registerJs('jQuery(\'#' . $this->options['id'] . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');');
+        if ($this->hasModel()) {
+            return Html::activeDropDownList($this->model, $this->attribute, $this->items, $this->options);
+        } else {
+            return Html::dropDownList($this->name, $this->selection, $this->items, $this->options);
+        }
     }
 }
