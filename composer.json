@@ -1,6 +1,6 @@
 {
   "name": "ivan-chkv/yii2-jquery-multiple-select",
-  "description": "Yii 2 jQuery Multiple Select Asset",
+  "description": "Yii 2 jQuery Multiple Select Widget",
   "keywords": ["yii2", "jquery", "multiple", "select", "checkbox"],
   "homepage": "http://wenzhixin.net.cn/p/multiple-select/",
   "type": "yii2-extension",

@@ -3,7 +3,7 @@
 namespace yii\jquery\multiple_select;
 
 
-class JquerySelect extends JqueryMultipleSelect
+class JquerySingleSelect extends JqueryMultipleSelect
 {
 
     public function run()
