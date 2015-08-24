@@ -15,6 +15,8 @@ class JqueryMultipleSelect extends InputWidget
 
     public $items = [];
 
+    public $filter = false;
+
     public $clientOptions = [];
 
     public function run()
@@ -26,6 +28,9 @@ class JqueryMultipleSelect extends InputWidget
         } else {
             $output = Html::listBox($this->name, $this->value, $this->items, $this->options);
         }
+        $this->clientOptions = array_merge([
+            'filter' => $this->filter
+        ], $this->clientOptions);
         $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');';
         if (Yii::$app->getRequest()->getIsAjax()) {
             $output .= Html::script($js);
