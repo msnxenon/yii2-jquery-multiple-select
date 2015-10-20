@@ -17,6 +17,9 @@ class MultipleSelect extends InputWidget
 
     /**
      * @var bool
+     * @see http://wenzhixin.net.cn/p/multiple-select/docs/#constructor
+     * @see http://wenzhixin.net.cn/p/multiple-select/docs/#the-filter1
+     * @see http://wenzhixin.net.cn/p/multiple-select/docs/#the-filter2
      */
     public $filter = false;
 
@@ -40,11 +43,11 @@ class MultipleSelect extends InputWidget
     public function run()
     {
         $inputId = $this->options['id'];
-        $this->options['multiple'] = true;
+        $options = array_merge($this->options, ['multiple' => true]);
         if ($this->hasModel()) {
-            $output = Html::activeListBox($this->model, $this->attribute, $this->items, $this->options);
+            $output = Html::activeListBox($this->model, $this->attribute, $this->items, $options);
         } else {
-            $output = Html::listBox($this->name, $this->value, $this->items, $this->options);
+            $output = Html::listBox($this->name, $this->value, $this->items, $options);
         }
         $clientOptions = array_merge([
             'filter' => $this->filter
