@@ -10,13 +10,29 @@ use Yii;
 class MultipleSelect extends InputWidget
 {
 
-    public $options = ['class' => 'form-control'];
-
+    /**
+     * @var array
+     */
     public $items = [];
 
+    /**
+     * @var bool
+     */
     public $filter = false;
 
+    /**
+     * @var array
+     */
     public $clientOptions = [];
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        Html::addCssClass($this->options, 'form-control');
+        parent::init();
+    }
 
     /**
      * @inheritdoc
@@ -30,10 +46,10 @@ class MultipleSelect extends InputWidget
         } else {
             $output = Html::listBox($this->name, $this->value, $this->items, $this->options);
         }
-        $this->clientOptions = array_merge([
+        $clientOptions = array_merge([
             'filter' => $this->filter
         ], $this->clientOptions);
-        $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');';
+        $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($clientOptions) . ');';
         if (Yii::$app->getRequest()->getIsAjax()) {
             $output .= Html::script($js);
         } else {
