@@ -1,11 +1,10 @@
 <?php
 
-namespace yii\jquery\multiple_select;
+namespace yii\jquery\multipleselect;
 
 use yii\web\AssetBundle;
 
-
-class JqueryMultipleSelectAsset extends AssetBundle
+class MultipleSelectAsset extends AssetBundle
 {
 
     public $sourcePath = '@bower/multiple-select';
