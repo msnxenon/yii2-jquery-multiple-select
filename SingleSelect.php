@@ -1,11 +1,13 @@
 <?php
 
-namespace yii\jquery\multiple_select;
+namespace yii\jquery\multipleselect;
 
-
-class JquerySingleSelect extends JqueryMultipleSelect
+class SingleSelect extends MultipleSelect
 {
 
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
         $this->clientOptions['single'] = true;
