@@ -1,14 +1,13 @@
 <?php
 
-namespace yii\jquery\multiple_select;
+namespace yii\jquery\multipleselect;
 
-use yii\helpers\Html,
-    yii\widgets\InputWidget,
-    yii\helpers\Json,
-    Yii;
+use yii\helpers\Html;
+use yii\widgets\InputWidget;
+use yii\helpers\Json;
+use Yii;
 
-
-class JqueryMultipleSelect extends InputWidget
+class MultipleSelect extends InputWidget
 {
 
     public $options = ['class' => 'form-control'];
@@ -19,6 +18,9 @@ class JqueryMultipleSelect extends InputWidget
 
     public $clientOptions = [];
 
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
         $inputId = $this->options['id'];
@@ -36,7 +38,7 @@ class JqueryMultipleSelect extends InputWidget
             $output .= Html::script($js);
         } else {
             $view = $this->getView();
-            JqueryMultipleSelectAsset::register($view);
+            MultipleSelectAsset::register($view);
             $view->registerJs($js);
         }
         return $output;
