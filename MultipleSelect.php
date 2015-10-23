@@ -17,7 +17,6 @@ class MultipleSelect extends InputWidget
 
     /**
      * @var bool
-     * @see http://wenzhixin.net.cn/p/multiple-select/docs/#constructor
      * @see http://wenzhixin.net.cn/p/multiple-select/docs/#the-filter1
      * @see http://wenzhixin.net.cn/p/multiple-select/docs/#the-filter2
      */
@@ -25,14 +24,12 @@ class MultipleSelect extends InputWidget
 
     /**
      * @var bool
-     * @see http://wenzhixin.net.cn/p/multiple-select/docs/#constructor
      * @see http://wenzhixin.net.cn/p/multiple-select/docs/#the-multiple-items
      */
     public $multiple = false;
 
     /**
      * @var int
-     * @see http://wenzhixin.net.cn/p/multiple-select/docs/#constructor
      * @see http://wenzhixin.net.cn/p/multiple-select/docs/#the-multiple-items
      */
     public $multipleWidth = 80;
