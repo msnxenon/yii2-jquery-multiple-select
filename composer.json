@@ -13,7 +13,7 @@
   ],
   "require": {
     "yiisoft/yii2": ">=2.0.4",
-    "bower-asset/multiple-select": "*"
+    "bower-asset/multiple-select": "1.1.*"
   },
   "autoload": {
     "psr-4": {
