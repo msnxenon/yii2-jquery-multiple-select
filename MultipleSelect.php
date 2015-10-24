@@ -65,8 +65,8 @@ class MultipleSelect extends InputWidget
             'multiple' => $this->multiple,
             'multipleWidth' => $this->multipleWidth
         ], $this->clientOptions);
-        if (array_key_exists('placeholder', $this->options)) {
-            $clientOptions['placeholder'] = $this->options['placeholder'];
+        if (!array_key_exists('placeholder', $clientOptions) && array_key_exists('placeholder', $options)) {
+            $clientOptions['placeholder'] = $options['placeholder'];
         }
         $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($clientOptions) . ');';
         if (Yii::$app->getRequest()->getIsAjax()) {
