@@ -54,8 +54,19 @@ class MultipleSelect extends InputWidget
     public function run()
     {
         $inputId = $this->options['id'];
-        $options = array_merge($this->options, ['multiple' => true]);
-        if ($this->hasModel()) {
+        $hasModel = $this->hasModel();
+        if (array_key_exists('value', $this->options)) {
+            $value = $this->options['value'];
+        } elseif ($hasModel) {
+            $value = Html::getAttributeValue($this->model, $this->attribute);
+        } else {
+            $value = $this->value;
+        }
+        $options = array_merge($this->options, [
+            'multiple' => true,
+            'value' => $value
+        ]);
+        if ($hasModel) {
             $output = Html::activeListBox($this->model, $this->attribute, $this->items, $options);
         } else {
             $output = Html::listBox($this->name, $this->value, $this->items, $options);
