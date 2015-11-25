@@ -106,9 +106,11 @@ class MultipleSelectTest extends TestCase
      */
     protected function checkExpected($mode, $actual, $expectedHtml, $expectedJs)
     {
+        list ($id, $name) = $this->getIdName($mode);
         switch ($mode) {
             case self::MODE_MODEL_ATTRIBUTE:
             case self::MODE_MODEL_ATTRIBUTE_VALUE:
+                $expectedHtml = '<input type="hidden" name="' . $name . '" value="">' . $expectedHtml;
                 $expectedHtml = '<div class="form-group field-testform-text">' . "\n" . $expectedHtml . "\n" . '</div>';
             case self::MODE_NAME_VALUE:
                 $this->assertEquals($expectedHtml, $actual);
@@ -126,6 +128,7 @@ class MultipleSelectTest extends TestCase
             case self::MODE_MODEL_ATTRIBUTE_AJAX:
             case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 $expectedHtml .= '<script>' . $expectedJs . '</script>';
+                $expectedHtml = '<input type="hidden" name="' . $name . '" value="">' . $expectedHtml;
                 $expectedHtml = '<div class="form-group field-testform-text">' . "\n" . $expectedHtml . "\n" . '</div>';
                 $this->assertEquals($expectedHtml, $actual);
                 return;
@@ -140,11 +143,11 @@ class MultipleSelectTest extends TestCase
     {
         $modes = [
             self::MODE_NAME_VALUE,
-            //self::MODE_NAME_VALUE_AJAX,
-            //self::MODE_MODEL_ATTRIBUTE,
-            //self::MODE_MODEL_ATTRIBUTE_AJAX,
-            //self::MODE_MODEL_ATTRIBUTE_VALUE,
-            //self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX
+            self::MODE_NAME_VALUE_AJAX,
+            self::MODE_MODEL_ATTRIBUTE,
+            self::MODE_MODEL_ATTRIBUTE_AJAX,
+            self::MODE_MODEL_ATTRIBUTE_VALUE,
+            self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX
         ];
         $items = [
             'So, we\'ll go no more a roving',

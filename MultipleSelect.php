@@ -54,28 +54,25 @@ class MultipleSelect extends InputWidget
     public function run()
     {
         $inputId = $this->options['id'];
-        $hasModel = $this->hasModel();
-        if (array_key_exists('value', $this->options)) {
-            $value = $this->options['value'];
-        } elseif ($hasModel) {
-            $value = Html::getAttributeValue($this->model, $this->attribute);
-        } else {
-            $value = $this->value;
-        }
-        $options = array_merge($this->options, [
-            'multiple' => true,
-            'value' => $value
-        ]);
-        if ($hasModel) {
+        $options = array_merge($this->options, ['multiple' => true]);
+        if ($this->hasModel()) {
+            if (isset($this->model->{$this->attribute}) && array_key_exists('value', $options)) {
+                $buffer = $this->model->{$this->attribute};
+                $this->model->{$this->attribute} = $options['value'];
+                unset($options['value']);
+            }
             $output = Html::activeListBox($this->model, $this->attribute, $this->items, $options);
+            if (isset($buffer)) {
+                $this->model->{$this->attribute} = $buffer;
+            }
         } else {
             $output = Html::listBox($this->name, $this->value, $this->items, $options);
         }
-        $clientOptions = array_merge([
+        $clientOptions = array_merge(array_diff_assoc([
             'filter' => $this->filter,
             'multiple' => $this->multiple,
             'multipleWidth' => $this->multipleWidth
-        ], $this->clientOptions);
+        ], get_class_vars(__CLASS__)), $this->clientOptions);
         if (!array_key_exists('placeholder', $clientOptions) && array_key_exists('placeholder', $options)) {
             $clientOptions['placeholder'] = $options['placeholder'];
         }
