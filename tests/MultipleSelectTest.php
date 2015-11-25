@@ -139,7 +139,7 @@ class MultipleSelectTest extends TestCase
     /**
      * @return array
      */
-    public function modeValueDataProvider()
+    public function modeSelectionItemsDataProvider()
     {
         $modes = [
             self::MODE_NAME_VALUE,
@@ -168,7 +168,7 @@ class MultipleSelectTest extends TestCase
      * @param int $mode
      * @param string $selection
      * @param array $items
-     * @dataProvider modeValueDataProvider
+     * @dataProvider modeSelectionItemsDataProvider
      */
     public function testWidget($mode, $selection, array $items = [])
     {
