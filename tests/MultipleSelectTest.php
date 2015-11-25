@@ -189,4 +189,32 @@ jQuery('#$id').multipleSelect([]);
 EXPECTED_JS;
         $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
     }
+
+    /**
+     * @param int $mode
+     * @param string $selection
+     * @param array $items
+     * @dataProvider modeSelectionItemsDataProvider
+     */
+    public function testWidgetClass($mode, $selection, array $items = [])
+    {
+        $actual = $this->getActual($mode, $selection, $items, [
+            'options' => ['class' => 'some-class']
+        ]);
+        list ($id, $name) = $this->getIdName($mode);
+        $selected = array_fill_keys(array_keys($items), '');
+        $selected[$selection] = ' selected';
+        $expectedHtml = <<<EXPECTED_HTML
+<select id="$id" class="some-class form-control" name="${name}[]" multiple size="4">
+<option value="0"$selected[0]>So, we&#039;ll go no more a roving</option>
+<option value="1"$selected[1]>So late into the night,</option>
+<option value="2"$selected[2]>Though the heart be still as loving,</option>
+<option value="3"$selected[3]>And the moon be still as bright.</option>
+</select>
+EXPECTED_HTML;
+        $expectedJs = <<<EXPECTED_JS
+jQuery('#$id').multipleSelect([]);
+EXPECTED_JS;
+        $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
+    }
 }
