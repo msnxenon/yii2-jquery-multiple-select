@@ -4,7 +4,6 @@ namespace yii\jquery\multipleselect\tests;
 
 use yii\widgets\ActiveForm;
 use Exception;
-use yii\helpers\Html;
 use yii\jquery\multipleselect\MultipleSelect;
 use yii\jquery\multipleselect\MultipleSelectAsset;
 use yii\codeception\TestCase;
@@ -172,12 +171,18 @@ class MultipleSelectTest extends TestCase
     {
         $actual = $this->getActual($mode, $selection, $items);
         list ($id, $name) = $this->getIdName($mode);
-        $encodedValue = Html::encode($selection);
+        $selected = array_fill_keys(array_keys($items), '');
+        $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<textarea id="$id" class="form-control" name="$name">$encodedValue</textarea>
+<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<option value="0"$selected[0]>So, we&#039;ll go no more a roving</option>
+<option value="1"$selected[1]>So late into the night,</option>
+<option value="2"$selected[2]>Though the heart be still as loving,</option>
+<option value="3"$selected[3]>And the moon be still as bright.</option>
+</select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
-jQuery('#$id').tinymce([]);
+jQuery('#$id').multipleSelect([]);
 EXPECTED_JS;
         $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
     }
