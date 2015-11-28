@@ -29,7 +29,7 @@ class MultipleSelectTest extends TestCase
      * @param array $config
      * @return string
      */
-    protected function getActual($mode, $selection, array $items = [], array $config = [])
+    protected function getActual($mode, $selection, array $items, array $config = [])
     {
         switch ($mode) {
             case self::MODE_NAME_VALUE_AJAX:
@@ -170,7 +170,7 @@ class MultipleSelectTest extends TestCase
      * @param array $items
      * @dataProvider modeSelectionItemsDataProvider
      */
-    public function testWidget($mode, $selection, array $items = [])
+    public function testWidget($mode, $selection, array $items)
     {
         $actual = $this->getActual($mode, $selection, $items);
         list ($id, $name) = $this->getIdName($mode);
@@ -196,7 +196,7 @@ EXPECTED_JS;
      * @param array $items
      * @dataProvider modeSelectionItemsDataProvider
      */
-    public function testWidgetClass($mode, $selection, array $items = [])
+    public function testWidgetClass($mode, $selection, array $items)
     {
         $actual = $this->getActual($mode, $selection, $items, [
             'options' => ['class' => 'some-class']
