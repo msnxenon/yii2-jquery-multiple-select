@@ -8,7 +8,7 @@ class TestForm extends Model
 {
 
     /**
-     * @var string
+     * @var int
      */
-    public $text;
+    public $number;
 }
