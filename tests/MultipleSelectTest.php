@@ -150,10 +150,8 @@ class MultipleSelectTest extends TestCase
             self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX
         ];
         $items = [
-            'So, we\'ll go no more a roving',
-            'So late into the night,',
-            'Though the heart be still as loving,',
-            'And the moon be still as bright.'
+            'If you hide your ignorance, no one will hit you and you\'ll never learn.',
+            'I don\'t talk things, sir. I talk the meaning of things.'
         ];
         $data = [];
         foreach ($modes as $mode) {
@@ -178,10 +176,8 @@ class MultipleSelectTest extends TestCase
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="${name}[]" multiple size="4">
-<option value="0"$selected[0]>So, we&#039;ll go no more a roving</option>
-<option value="1"$selected[1]>So late into the night,</option>
-<option value="2"$selected[2]>Though the heart be still as loving,</option>
-<option value="3"$selected[3]>And the moon be still as bright.</option>
+<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
+<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -206,10 +202,8 @@ EXPECTED_JS;
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="some-class form-control" name="${name}[]" multiple size="4">
-<option value="0"$selected[0]>So, we&#039;ll go no more a roving</option>
-<option value="1"$selected[1]>So late into the night,</option>
-<option value="2"$selected[2]>Though the heart be still as loving,</option>
-<option value="3"$selected[3]>And the moon be still as bright.</option>
+<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
+<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -234,10 +228,8 @@ EXPECTED_JS;
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="${name}[]" readonly multiple size="4">
-<option value="0"$selected[0]>So, we&#039;ll go no more a roving</option>
-<option value="1"$selected[1]>So late into the night,</option>
-<option value="2"$selected[2]>Though the heart be still as loving,</option>
-<option value="3"$selected[3]>And the moon be still as bright.</option>
+<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
+<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -262,10 +254,8 @@ EXPECTED_JS;
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="${name}[]" multiple size="4">
-<option value="0"$selected[0]>So, we&#039;ll go no more a roving</option>
-<option value="1"$selected[1]>So late into the night,</option>
-<option value="2"$selected[2]>Though the heart be still as loving,</option>
-<option value="3"$selected[3]>And the moon be still as bright.</option>
+<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
+<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
