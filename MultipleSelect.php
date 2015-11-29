@@ -5,6 +5,7 @@ namespace yii\jquery\multipleselect;
 use yii\helpers\Html;
 use yii\widgets\InputWidget;
 use yii\helpers\Json;
+use yii\base\NotSupportedException;
 use Yii;
 
 class MultipleSelect extends InputWidget
@@ -56,7 +57,10 @@ class MultipleSelect extends InputWidget
         $inputId = $this->options['id'];
         $options = array_merge($this->options, ['multiple' => true]);
         if ($this->hasModel()) {
-            if (isset($this->model->{$this->attribute}) && array_key_exists('value', $options)) {
+            if (array_key_exists('value', $options)) {
+                if (!isset($this->model->{$this->attribute})) {
+                    throw new NotSupportedException('Unable to set value of the property "' . $this->attribute . '".');
+                }
                 $buffer = $this->model->{$this->attribute};
                 $this->model->{$this->attribute} = $options['value'];
                 unset($options['value']);
