@@ -175,7 +175,7 @@ class MultipleSelectTest extends TestCase
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -201,7 +201,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="some-class form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="some-class form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -227,7 +227,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" readonly multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" readonly multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -253,7 +253,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -279,7 +279,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" disabled multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" disabled multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -305,7 +305,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -331,7 +331,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -357,7 +357,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
@@ -383,7 +383,7 @@ EXPECTED_JS;
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="${name}[]" multiple size="4">
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>

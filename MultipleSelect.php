@@ -59,7 +59,7 @@ class MultipleSelect extends InputWidget
         if ($this->hasModel()) {
             if (array_key_exists('value', $options)) {
                 if (!isset($this->model->{$this->attribute})) {
-                    throw new NotSupportedException('Unable to set value of the property "' . $this->attribute . '".');
+                    throw new NotSupportedException("Unable to set value of the property '{$this->attribute}'.");
                 }
                 $buffer = $this->model->{$this->attribute};
                 $this->model->{$this->attribute} = $options['value'];
