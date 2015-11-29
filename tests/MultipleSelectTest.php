@@ -552,4 +552,34 @@ jQuery('#$id').multipleSelect({"multipleWidth":80});
 EXPECTED_JS;
         $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
     }
+
+    /**
+     * @param int $mode
+     * @param string $selection
+     * @param array $items
+     * @dataProvider modeSelectionItemsDataProvider
+     */
+    public function testWidgetClientOptions($mode, $selection, array $items)
+    {
+        $actual = $this->getActual($mode, $selection, $items, [
+            'clientOptions' => [
+                'selectAllText' => 'Выбрать все',
+                'allSelected' => 'Все выбрано',
+                'countSelected' => '# из % выбрано'
+            ]
+        ]);
+        list ($id, $name) = $this->getIdName($mode);
+        $selected = array_fill_keys(array_keys($items), '');
+        $selected[$selection] = ' selected';
+        $expectedHtml = <<<EXPECTED_HTML
+<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
+<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
+<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+</select>
+EXPECTED_HTML;
+        $expectedJs = <<<EXPECTED_JS
+jQuery('#$id').multipleSelect({"selectAllText":"Выбрать все","allSelected":"Все выбрано","countSelected":"# из % выбрано"});
+EXPECTED_JS;
+        $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
+    }
 }
