@@ -195,13 +195,13 @@ EXPECTED_JS;
     public function testWidgetClass($mode, $selection, array $items)
     {
         $actual = $this->getActual($mode, $selection, $items, [
-            'options' => ['class' => 'some-class']
+            'options' => ['class' => 'hidden']
         ]);
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="some-class form-control" name="{$name}[]" multiple size="4">
+<select id="$id" class="hidden form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
 <option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
 </select>
