@@ -45,6 +45,7 @@ class MultipleSelect extends InputWidget
      */
     public function init()
     {
+        Html::addCssClass($this->options, 'form-control');
         $this->options['multiple'] = true;
         $this->clientOptions = array_merge(array_diff_assoc([
             'filter' => $this->filter,
@@ -57,7 +58,6 @@ class MultipleSelect extends InputWidget
             }
             unset($this->options['placeholder']);
         }
-        Html::addCssClass($this->options, 'form-control');
         parent::init();
     }
 
