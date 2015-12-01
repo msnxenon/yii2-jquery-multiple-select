@@ -8,6 +8,7 @@ use yii\jquery\multipleselect\MultipleSelect;
 use yii\jquery\multipleselect\MultipleSelectAsset;
 use yii\codeception\TestCase;
 use yii\web\View;
+use yii\helpers\Html;
 use Yii;
 
 class MultipleSelectTest extends TestCase
@@ -174,10 +175,13 @@ class MultipleSelectTest extends TestCase
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -200,10 +204,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="hidden form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -226,10 +233,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -253,10 +263,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -279,10 +292,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" readonly multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -305,10 +321,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -331,10 +350,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" disabled multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -357,10 +379,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -383,10 +408,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -409,10 +437,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -436,10 +467,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -462,10 +496,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -488,10 +525,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -515,10 +555,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -541,10 +584,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -567,10 +613,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -594,10 +643,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
@@ -624,10 +676,13 @@ EXPECTED_JS;
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
         $selected[$selection] = ' selected';
+        $encodedItems = array_map(function ($item) {
+            return Html::encode($item);
+        }, $items);
         $expectedHtml = <<<EXPECTED_HTML
 <select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>If you hide your ignorance, no one will hit you and you&#039;ll never learn.</option>
-<option value="1"$selected[1]>I don&#039;t talk things, sir. I talk the meaning of things.</option>
+<option value="0"$selected[0]>$encodedItems[0]</option>
+<option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
 EXPECTED_HTML;
         $expectedJs = <<<EXPECTED_JS
