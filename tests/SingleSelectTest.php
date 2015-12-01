@@ -14,6 +14,9 @@ use Yii;
 class SingleSelectTest extends TestCase
 {
 
+    /**
+     * @inheritdoc
+     */
     public $appConfig = '@yii/jquery/multipleselect/tests/config.php';
 
     const MODE_NAME_VALUE = 1;
