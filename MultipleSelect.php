@@ -51,7 +51,7 @@ class MultipleSelect extends InputWidget
             'filter' => $this->filter,
             'multiple' => $this->multiple,
             'multipleWidth' => $this->multipleWidth
-        ], get_class_vars(get_class($this))), $this->clientOptions);
+        ], get_class_vars(__CLASS__)), $this->clientOptions);
         if (array_key_exists('placeholder', $this->options)) {
             if (!array_key_exists('placeholder', $this->clientOptions)) {
                 $this->clientOptions['placeholder'] = $this->options['placeholder'];
