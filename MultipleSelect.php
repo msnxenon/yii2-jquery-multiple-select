@@ -5,6 +5,7 @@ namespace yii\jquery\multipleselect;
 use yii\helpers\Html;
 use yii\widgets\InputWidget;
 use yii\helpers\Json;
+use yii\base\NotSupportedException;
 use Yii;
 
 class MultipleSelect extends InputWidget
@@ -45,41 +46,45 @@ class MultipleSelect extends InputWidget
     public function init()
     {
         Html::addCssClass($this->options, 'form-control');
+        $this->options['multiple'] = true;
+        $this->clientOptions = array_merge(array_diff_assoc([
+            'filter' => $this->filter,
+            'multiple' => $this->multiple,
+            'multipleWidth' => $this->multipleWidth
+        ], get_class_vars(__CLASS__)), $this->clientOptions);
+        if (array_key_exists('placeholder', $this->options)) {
+            if (!array_key_exists('placeholder', $this->clientOptions)) {
+                $this->clientOptions['placeholder'] = $this->options['placeholder'];
+            }
+            unset($this->options['placeholder']);
+        }
         parent::init();
     }
 
     /**
      * @inheritdoc
+     * @throw NotSupportedException
      */
     public function run()
     {
         $inputId = $this->options['id'];
-        $hasModel = $this->hasModel();
-        if (array_key_exists('value', $this->options)) {
-            $value = $this->options['value'];
-        } elseif ($hasModel) {
-            $value = Html::getAttributeValue($this->model, $this->attribute);
+        if ($this->hasModel()) {
+            if (array_key_exists('value', $this->options)) {
+                if (!isset($this->model->{$this->attribute})) {
+                    throw new NotSupportedException("Unable to set value of the property '{$this->attribute}'.");
+                }
+                $buffer = $this->model->{$this->attribute};
+                $this->model->{$this->attribute} = $this->options['value'];
+                unset($this->options['value']);
+            }
+            $output = Html::activeListBox($this->model, $this->attribute, $this->items, $this->options);
+            if (isset($buffer)) {
+                $this->model->{$this->attribute} = $buffer;
+            }
         } else {
-            $value = $this->value;
+            $output = Html::listBox($this->name, $this->value, $this->items, $this->options);
         }
-        $options = array_merge($this->options, [
-            'multiple' => true,
-            'value' => $value
-        ]);
-        if ($hasModel) {
-            $output = Html::activeListBox($this->model, $this->attribute, $this->items, $options);
-        } else {
-            $output = Html::listBox($this->name, $this->value, $this->items, $options);
-        }
-        $clientOptions = array_merge([
-            'filter' => $this->filter,
-            'multiple' => $this->multiple,
-            'multipleWidth' => $this->multipleWidth
-        ], $this->clientOptions);
-        if (!array_key_exists('placeholder', $clientOptions) && array_key_exists('placeholder', $options)) {
-            $clientOptions['placeholder'] = $options['placeholder'];
-        }
-        $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($clientOptions) . ');';
+        $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');';
         if (Yii::$app->getRequest()->getIsAjax()) {
             $output .= Html::script($js);
         } else {

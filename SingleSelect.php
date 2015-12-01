@@ -8,9 +8,9 @@ class SingleSelect extends MultipleSelect
     /**
      * @inheritdoc
      */
-    public function run()
+    public function init()
     {
         $this->clientOptions['single'] = true;
-        return parent::run();
+        parent::init();
     }
 }
