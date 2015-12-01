@@ -4,11 +4,11 @@ namespace yii\jquery\multipleselect\tests;
 
 use yii\widgets\ActiveForm;
 use Exception;
+use yii\helpers\Html;
 use yii\jquery\multipleselect\MultipleSelect;
 use yii\jquery\multipleselect\MultipleSelectAsset;
 use yii\codeception\TestCase;
 use yii\web\View;
-use yii\helpers\Html;
 use Yii;
 
 class MultipleSelectTest extends TestCase
