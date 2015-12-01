@@ -287,64 +287,6 @@ EXPECTED_JS;
      * @param array $items
      * @dataProvider modeSelectionItemsDataProvider
      */
-    public function testWidgetReadOnlyTrue($mode, $selection, array $items)
-    {
-        $actual = $this->getActual($mode, $selection, $items, [
-            'options' => ['readonly' => true]
-        ]);
-        list ($id, $name) = $this->getIdName($mode);
-        $selected = array_fill_keys(array_keys($items), '');
-        $selected[$selection] = ' selected';
-        $encodedItems = array_map(function ($item) {
-            return Html::encode($item);
-        }, $items);
-        $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="{$name}[]" readonly multiple size="4">
-<option value="0"$selected[0]>$encodedItems[0]</option>
-<option value="1"$selected[1]>$encodedItems[1]</option>
-</select>
-EXPECTED_HTML;
-        $expectedJs = <<<EXPECTED_JS
-jQuery('#$id').multipleSelect([]);
-EXPECTED_JS;
-        $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
-    }
-
-    /**
-     * @param int $mode
-     * @param string $selection
-     * @param array $items
-     * @dataProvider modeSelectionItemsDataProvider
-     */
-    public function testWidgetReadOnlyFalse($mode, $selection, array $items)
-    {
-        $actual = $this->getActual($mode, $selection, $items, [
-            'options' => ['readonly' => false]
-        ]);
-        list ($id, $name) = $this->getIdName($mode);
-        $selected = array_fill_keys(array_keys($items), '');
-        $selected[$selection] = ' selected';
-        $encodedItems = array_map(function ($item) {
-            return Html::encode($item);
-        }, $items);
-        $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="form-control" name="{$name}[]" multiple size="4">
-<option value="0"$selected[0]>$encodedItems[0]</option>
-<option value="1"$selected[1]>$encodedItems[1]</option>
-</select>
-EXPECTED_HTML;
-        $expectedJs = <<<EXPECTED_JS
-jQuery('#$id').multipleSelect([]);
-EXPECTED_JS;
-        $this->checkExpected($mode, $actual, $expectedHtml, $expectedJs);
-    }
-
-    /**
-     * @param int $mode
-     * @param string $selection
-     * @param array $items
-     * @dataProvider modeSelectionItemsDataProvider
-     */
     public function testWidgetDisabledTrue($mode, $selection, array $items)
     {
         $actual = $this->getActual($mode, $selection, $items, [
