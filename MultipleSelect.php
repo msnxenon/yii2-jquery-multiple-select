@@ -63,6 +63,7 @@ class MultipleSelect extends InputWidget
 
     /**
      * @inheritdoc
+     * @throw NotSupportedException
      */
     public function run()
     {
