@@ -10,6 +10,9 @@ use Yii;
 class MultipleSelectAssetTest extends TestCase
 {
 
+    /**
+     * @inheritdoc
+     */
     public $appConfig = '@yii/jquery/multipleselect/tests/config.php';
 
     /**
