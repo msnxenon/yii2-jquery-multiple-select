@@ -10,7 +10,7 @@ class SingleSelect extends MultipleSelect
      */
     public function init()
     {
-        $this->clientOptions['single'] = true;
         parent::init();
+        $this->clientOptions['single'] = true;
     }
 }
