@@ -67,7 +67,6 @@ class MultipleSelect extends InputWidget
      */
     public function run()
     {
-        $inputId = $this->options['id'];
         if ($this->hasModel()) {
             if (array_key_exists('value', $this->options)) {
                 if (!isset($this->model->{$this->attribute})) {
@@ -84,7 +83,7 @@ class MultipleSelect extends InputWidget
         } else {
             $output = Html::listBox($this->name, $this->value, $this->items, $this->options);
         }
-        $js = 'jQuery(\'#' . $inputId . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');';
+        $js = 'jQuery(\'#' . $this->options['id'] . '\').multipleSelect(' . Json::htmlEncode($this->clientOptions) . ');';
         if (Yii::$app->getRequest()->getIsAjax()) {
             $output .= Html::script($js);
         } else {
