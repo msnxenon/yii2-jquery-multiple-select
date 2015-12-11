@@ -56,7 +56,6 @@ class SingleSelectTest extends TestCase
             case self::MODE_MODEL_ATTRIBUTE_VALUE:
             case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 $model = new TestForm;
-                $model->number = '';
                 if (array_key_exists('options', $config)) {
                     $config['options']['value'] = $selection;
                 } else {
@@ -157,9 +156,10 @@ class SingleSelectTest extends TestCase
             'If you hide your ignorance, no one will hit you and you\'ll never learn.',
             'I don\'t talk things, sir. I talk the meaning of things.'
         ];
+        $selections = array_merge([null, ''], array_keys($items));
         $data = [];
         foreach ($modes as $mode) {
-            foreach (array_keys($items) as $selection) {
+            foreach ($selections as $selection) {
                 $data[] = [$mode, $selection, $items];
             }
         }
