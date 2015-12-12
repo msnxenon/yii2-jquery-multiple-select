@@ -202,7 +202,7 @@ EXPECTED_JS;
     public function testWidgetClass($mode, $selection, array $items)
     {
         $actual = $this->getActual($mode, $selection, $items, [
-            'options' => ['class' => 'hidden']
+            'options' => ['class' => 'something']
         ]);
         list ($id, $name) = $this->getIdName($mode);
         $selected = array_fill_keys(array_keys($items), '');
@@ -211,7 +211,7 @@ EXPECTED_JS;
             return Html::encode($item);
         }, $items);
         $expectedHtml = <<<EXPECTED_HTML
-<select id="$id" class="hidden form-control" name="{$name}[]" multiple size="4">
+<select id="$id" class="something form-control" name="{$name}[]" multiple size="4">
 <option value="0"$selected[0]>$encodedItems[0]</option>
 <option value="1"$selected[1]>$encodedItems[1]</option>
 </select>
