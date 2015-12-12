@@ -47,12 +47,11 @@ class SingleSelectTest extends TestCase
             case self::MODE_NAME_VALUE:
             case self::MODE_NAME_VALUE_AJAX:
                 SingleSelect::$counter = 0;
-                $actual = SingleSelect::widget(array_merge($config, [
+                return SingleSelect::widget(array_merge($config, [
                     'name' => 'number',
                     'value' => $selection,
                     'items' => $items
                 ]));
-                return $actual;
             case self::MODE_MODEL_ATTRIBUTE_VALUE:
             case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 $model = new TestForm;
