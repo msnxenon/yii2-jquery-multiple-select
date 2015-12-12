@@ -13,7 +13,7 @@
   ],
   "require": {
     "yiisoft/yii2": ">=2.0.4",
-    "bower-asset/multiple-select": "1.1.*|1.2.*"
+    "bower-asset/multiple-select": "1.1.*"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
