@@ -11,7 +11,7 @@ class MultipleSelectAsset extends AssetBundle
 
     public $depends = ['yii\web\JqueryAsset'];
 
-    public $js = ['jquery.multiple.select.js'];
+    public $js = ['multiple-select.js'];
 
     public $css = ['multiple-select.css'];
 }
