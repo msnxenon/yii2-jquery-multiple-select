@@ -72,13 +72,13 @@ class MultipleSelect extends InputWidget
                 if (!in_array($this->attribute, $this->model->attributes())) {
                     throw new NotSupportedException('Unable to set value of the property \'' . $this->attribute . '\'.');
                 }
-                $stash = $this->model->getAttributes([$this->attribute]);
-                $this->model->setAttributes([$this->attribute => $this->options['value']], false);
+                $stash = $this->model->{$this->attribute};
+                $this->model->{$this->attribute} = $this->options['value'];
                 unset($this->options['value']);
             }
             $output = Html::activeListBox($this->model, $this->attribute, $this->items, $this->options);
             if (isset($stash)) {
-                $this->model->setAttributes($stash, false);
+                $this->model->{$this->attribute} = $stash;
             }
         } else {
             $output = Html::listBox($this->name, $this->value, $this->items, $this->options);
