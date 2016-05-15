@@ -47,6 +47,10 @@ class MultipleSelect extends InputWidget
     {
         parent::init();
         Html::addCssClass($this->options, 'form-control');
+        if (array_key_exists('value', $this->options)) {
+            $this->value = $this->options['value'];
+            unset($this->options['value']);
+        }
         $this->options['multiple'] = true;
         $this->clientOptions = array_merge(array_diff_assoc([
             'filter' => $this->filter,
@@ -68,13 +72,12 @@ class MultipleSelect extends InputWidget
     public function run()
     {
         if ($this->hasModel()) {
-            if (array_key_exists('value', $this->options)) {
+            if (!is_null($this->value)) {
                 if (!in_array($this->attribute, $this->model->attributes())) {
                     throw new NotSupportedException('Unable to set value of the property \'' . $this->attribute . '\'.');
                 }
                 $stash = $this->model->{$this->attribute};
-                $this->model->{$this->attribute} = $this->options['value'];
-                unset($this->options['value']);
+                $this->model->{$this->attribute} = $this->value;
             }
             $output = Html::activeListBox($this->model, $this->attribute, $this->items, $this->options);
             if (isset($stash)) {
