@@ -36,32 +36,32 @@ class MultipleSelectTest extends TestCase
     protected function getActual($mode, $selection, array $items, array $config = [])
     {
         switch ($mode) {
-            case self::MODE_NAME_VALUE_AJAX:
-            case self::MODE_MODEL_ATTRIBUTE_AJAX:
-            case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
+            case static::MODE_NAME_VALUE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 /* @var $request \yii\jquery\multipleselect\tests\Request */
                 $request = Yii::$app->getRequest();
                 $request->setIsAjax(true);
         }
         switch ($mode) {
-            case self::MODE_NAME_VALUE:
-            case self::MODE_NAME_VALUE_AJAX:
+            case static::MODE_NAME_VALUE:
+            case static::MODE_NAME_VALUE_AJAX:
                 MultipleSelect::$counter = 0;
                 return MultipleSelect::widget(array_merge($config, [
                     'name' => 'number',
                     'value' => $selection,
                     'items' => $items
                 ]));
-            case self::MODE_MODEL_ATTRIBUTE_VALUE:
-            case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 $model = new TestForm;
                 if (array_key_exists('options', $config)) {
                     $config['options']['value'] = $selection;
                 } else {
                     $config['options'] = ['value' => $selection];
                 }
-            case self::MODE_MODEL_ATTRIBUTE:
-            case self::MODE_MODEL_ATTRIBUTE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE:
+            case static::MODE_MODEL_ATTRIBUTE_AJAX:
                 if (!isset($model)) {
                     $model = new TestForm;
                     $model->number = $selection;
@@ -84,15 +84,15 @@ class MultipleSelectTest extends TestCase
     protected function getIdName($mode)
     {
         switch ($mode) {
-            case self::MODE_NAME_VALUE:
-            case self::MODE_NAME_VALUE_AJAX:
+            case static::MODE_NAME_VALUE:
+            case static::MODE_NAME_VALUE_AJAX:
                 $id = 'w0';
                 $name = 'number';
                 return [$id, $name];
-            case self::MODE_MODEL_ATTRIBUTE:
-            case self::MODE_MODEL_ATTRIBUTE_AJAX:
-            case self::MODE_MODEL_ATTRIBUTE_VALUE:
-            case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE:
+            case static::MODE_MODEL_ATTRIBUTE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 $id = 'testform-number';
                 $name = 'TestForm[number]';
                 return [$id, $name];
@@ -110,11 +110,11 @@ class MultipleSelectTest extends TestCase
     {
         list ($id, $name) = $this->getIdName($mode);
         switch ($mode) {
-            case self::MODE_MODEL_ATTRIBUTE:
-            case self::MODE_MODEL_ATTRIBUTE_VALUE:
+            case static::MODE_MODEL_ATTRIBUTE:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE:
                 $expectedHtml = '<input type="hidden" name="' . $name . '" value="">' . $expectedHtml;
                 $expectedHtml = '<div class="form-group field-testform-number">' . "\n" . $expectedHtml . "\n" . '</div>';
-            case self::MODE_NAME_VALUE:
+            case static::MODE_NAME_VALUE:
                 $this->assertEquals($expectedHtml, $actual);
                 $view = Yii::$app->getView();
                 $this->assertArrayHasKey(MultipleSelectAsset::className(), $view->assetBundles);
@@ -123,12 +123,12 @@ class MultipleSelectTest extends TestCase
                 $this->assertArrayHasKey($jsKey, $view->js[View::POS_READY]);
                 $this->assertEquals($expectedJs, $view->js[View::POS_READY][$jsKey]);
                 return;
-            case self::MODE_NAME_VALUE_AJAX:
+            case static::MODE_NAME_VALUE_AJAX:
                 $expectedHtml .= '<script>' . $expectedJs . '</script>';
                 $this->assertEquals($expectedHtml, $actual);
                 return;
-            case self::MODE_MODEL_ATTRIBUTE_AJAX:
-            case self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE_AJAX:
+            case static::MODE_MODEL_ATTRIBUTE_VALUE_AJAX:
                 $expectedHtml .= '<script>' . $expectedJs . '</script>';
                 $expectedHtml = '<input type="hidden" name="' . $name . '" value="">' . $expectedHtml;
                 $expectedHtml = '<div class="form-group field-testform-number">' . "\n" . $expectedHtml . "\n" . '</div>';
@@ -144,12 +144,12 @@ class MultipleSelectTest extends TestCase
     public function modeSelectionItemsDataProvider()
     {
         $modes = [
-            self::MODE_NAME_VALUE,
-            self::MODE_NAME_VALUE_AJAX,
-            self::MODE_MODEL_ATTRIBUTE,
-            self::MODE_MODEL_ATTRIBUTE_AJAX,
-            self::MODE_MODEL_ATTRIBUTE_VALUE,
-            self::MODE_MODEL_ATTRIBUTE_VALUE_AJAX
+            static::MODE_NAME_VALUE,
+            static::MODE_NAME_VALUE_AJAX,
+            static::MODE_MODEL_ATTRIBUTE,
+            static::MODE_MODEL_ATTRIBUTE_AJAX,
+            static::MODE_MODEL_ATTRIBUTE_VALUE,
+            static::MODE_MODEL_ATTRIBUTE_VALUE_AJAX
         ];
         $items = [
             'If you hide your ignorance, no one will hit you and you\'ll never learn.',
