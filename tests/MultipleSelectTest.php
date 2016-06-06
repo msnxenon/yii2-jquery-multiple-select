@@ -7,17 +7,12 @@ use Exception;
 use yii\helpers\Html;
 use yii\jquery\multipleselect\MultipleSelect;
 use yii\jquery\multipleselect\MultipleSelectAsset;
-use yii\codeception\TestCase;
+use yii\phpunit\TestCase;
 use yii\web\View;
 use Yii;
 
 class MultipleSelectTest extends TestCase
 {
-
-    /**
-     * @inheritdoc
-     */
-    public $appConfig = '@yii/jquery/multipleselect/tests/config.php';
 
     const MODE_NAME_VALUE = 1;
     const MODE_NAME_VALUE_AJAX = 2;

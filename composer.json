@@ -16,8 +16,7 @@
     "bower-asset/multiple-select": "1.2.*"
   },
   "require-dev": {
-    "yiisoft/yii2-codeception": "*",
-    "codeception/codeception": "*"
+    "ivan-chkv/yii2-phpunit": "2.*"
   },
   "autoload": {
     "psr-4": {
