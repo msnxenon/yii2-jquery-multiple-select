@@ -4,16 +4,11 @@ namespace yii\jquery\multipleselect\tests;
 
 use yii\helpers\FileHelper;
 use yii\jquery\multipleselect\MultipleSelectAsset;
-use yii\codeception\TestCase;
+use yii\phpunit\TestCase;
 use Yii;
 
 class MultipleSelectAssetTest extends TestCase
 {
-
-    /**
-     * @inheritdoc
-     */
-    public $appConfig = '@yii/jquery/multipleselect/tests/config.php';
 
     /**
      * @inheritdoc
