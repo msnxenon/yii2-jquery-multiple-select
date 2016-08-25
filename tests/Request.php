@@ -2,22 +2,22 @@
 
 namespace yii\jquery\multipleselect\tests;
 
-use yii\web\Request as YiiRequest;
+use yii\web\Request as WebRequest;
 
-class Request extends YiiRequest
+class Request extends WebRequest
 {
 
     /**
      * @var bool
      */
-    private $_isAjax = false;
+    private $isAjax = false;
 
     /**
      * @inheritdoc
      */
     public function getIsAjax()
     {
-        return $this->_isAjax;
+        return $this->isAjax;
     }
 
     /**
@@ -25,6 +25,6 @@ class Request extends YiiRequest
      */
     public function setIsAjax($isAjax)
     {
-        $this->_isAjax = $isAjax;
+        $this->isAjax = $isAjax;
     }
 }
